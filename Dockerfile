@@ -12,8 +12,8 @@ RUN apt-get update && apt-get install -y \
     wget
 
 # setup and build eipcs itself
-COPY epics_build_vars.sh /epics_build_vars.sh
-RUN cat /epics_build_vars.sh >> /etc/bash.bashrc && rm /epics_build_vars.sh
+COPY epics_build_vars.sh /usr/local/bin/epics_build_vars.sh
+RUN cat /usr/local/bin/epics_build_vars.sh >> /etc/bash.bashrc
 
 # add --no-check-certificate if anl doesn't get their certs updated
 RUN mkdir -p /usr/local/src/ && cd /usr/local/src/ &&\
