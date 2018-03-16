@@ -21,7 +21,7 @@ RUN mkdir -p /usr/local/src/ && cd /usr/local/src/ &&\
     tar -xvzf baseR3.14.12.6.tar.gz &&\
     cd /usr/local/src/base-3.14.12.6 && \
     make clean uninstall &&\
-    make &&\
+    make
 
 ## build asyn4
 COPY asyn4.32.release /usr/local/src/asyn4.32.release
