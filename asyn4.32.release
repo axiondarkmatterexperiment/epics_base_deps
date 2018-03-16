@@ -1,6 +1,6 @@
 #RELEASE Location of external products
 
-SUPPORT=/home/admx/epics/
+SUPPORT=/usr/local/src
 -include $(TOP)/../configure/SUPPORT.$(EPICS_HOST_ARCH)
 
 #  IPAC is only necessary if support for Greensprings IP488 is required
@@ -12,5 +12,5 @@ SUPPORT=/home/admx/epics/
 
 #  EPICS_BASE 3.14.6 or later is require
 LINUX_GPIB=NO
-EPICS_BASE=/home/admx/epics/base-3.14.12.6
+EPICS_BASE=/usr/local/src/base-3.14.12.6
 -include $(TOP)/../configure/EPICS_BASE.$(EPICS_HOST_ARCH)
