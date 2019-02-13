@@ -15,7 +15,19 @@ RUN mkdir -p /home/admx/epics
 
 # setup and build eipcs itself
 COPY epics_build_vars.sh /usr/local/bin/epics_build_vars.sh
-RUN cat /usr/local/bin/epics_build_vars.sh >> /etc/bash.bashrc
+#RUN cat /usr/local/bin/epics_build_vars.sh >> /etc/bash.bashrc
+ARG epics_version=3.14.12.6
+ARG epics_path=/home/admx/epics
+ENV \
+    EPICS_VERSION=$epics_version \
+    EPICS_PATH=$epics_path \
+    EPICS_CA_MAX_ARRAY_BYTES=640000 \
+    EPICS_BASE=$epics_path/base-$epics_version \
+    EPICS_HOST_ARCH=linux-x86_64 \
+    PYEPICS_LIBCA=$epics_path/base-$epics_version/bin/linux-x86_64/libca.so
+RUN echo "# epics library entries\n$epics_path/base-$epics_version/lib/linux-x86_64" > /etc/ld.so.conf.d/libepics.conf
+    #LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$EPICS_PATH/base-$epics_version/lib/linux-x86_64/:/usr/local/lib \
+    #PATH=$PATH:$epics_path/base-$epics_version/bin/linux-x86_64/:/home/admx/scripts \
 
 # add --no-check-certificate if anl doesn't get their certs updated
 RUN cd /home/admx/epics &&\
@@ -40,3 +52,4 @@ RUN cd /home/admx/epics/asyn4-32 &&\
     tar -xvzf StreamDevice-2.tgz &&\
     cd /home/admx/epics/asyn4-32/StreamDevice-2-6 &&\
     make
+
