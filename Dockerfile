@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
 RUN mkdir -p /home/admx/epics
 
 # setup and build eipcs itself
-COPY epics_build_vars.sh /usr/local/bin/epics_build_vars.sh
+#COPY epics_build_vars.sh /usr/local/bin/epics_build_vars.sh
 #RUN cat /usr/local/bin/epics_build_vars.sh >> /etc/bash.bashrc
 ARG epics_version=3.14.12.6
 ARG epics_path=/home/admx/epics
